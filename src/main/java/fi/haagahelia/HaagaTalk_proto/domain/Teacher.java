@@ -1,23 +1,15 @@
 package fi.haagahelia.HaagaTalk_proto.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
-@Entity
 public class Teacher {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="teacherId", nullable = false, updatable = false)
-	private Long teacherId;
-	@Column(name="firstName", nullable = false)
+	private String teacherId;
 	private String firstName;
 	private String lastName;
 	
 	public Teacher() {}
-	public Teacher(Long teacherId, String firstName, String lastName) {
+	public Teacher(String teacherId, String firstName, String lastName) {
 		this.teacherId = teacherId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -28,7 +20,7 @@ public class Teacher {
 		return firstName + ", " + lastName;
 	}
 	
-	public Long getTeacherId() {
+	public String getTeacherId() {
 		return teacherId;
 	}
 	public String getFirstName() {
@@ -38,7 +30,7 @@ public class Teacher {
 		return lastName;
 	}
 	
-	public void setTeacherId(Long teacherId) {
+	public void setTeacherId(String teacherId) {
 		this.teacherId = teacherId;
 	}
 	public void setFirstName(String firstName) {

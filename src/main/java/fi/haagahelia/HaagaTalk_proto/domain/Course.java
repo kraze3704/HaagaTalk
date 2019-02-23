@@ -1,20 +1,15 @@
 package fi.haagahelia.HaagaTalk_proto.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
-@Entity
 public class Course {
 	@Id
-	@Column(name="courseCode", nullable = false, updatable = false)
 	private String courseCode;
-	@Column(name="courseName", nullable = false)
 	private String courseName;
-	private Long teacherId;
+	private String teacherId;
 	
 	public Course() {}
-	public Course(String courseCode, String courseName, Long teacherId) {
+	public Course(String courseCode, String courseName, String teacherId) {
 		this.courseCode = courseCode;
 		this.courseName = courseName;
 		this.teacherId = teacherId;
@@ -26,7 +21,7 @@ public class Course {
 	public String getCourseName() {
 		return courseName;
 	}
-	public Long getTeacherId() {
+	public String getTeacherId() {
 		return teacherId;
 	}
 	
@@ -36,7 +31,7 @@ public class Course {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-	public void setTeacherId(Long teacherId) {
+	public void setTeacherId(String teacherId) {
 		this.teacherId = teacherId;
 	}
 	

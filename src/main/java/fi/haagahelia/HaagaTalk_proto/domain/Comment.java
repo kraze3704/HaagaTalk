@@ -1,25 +1,16 @@
 package fi.haagahelia.HaagaTalk_proto.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
-@Entity
 public class Comment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="commentId", nullable = false, updatable = false)
-	private Long commentId;
-	@Column(name="courseCode", nullable = false)
+	private String commentId;
 	private String courseCode;
-	@Column(name="username", nullable = false)
 	private String username;
 	private String comment;
 	
 	public Comment() {}
-	public Comment(Long commentId, String courseCode, String username, String comment) {
+	public Comment(String commentId, String courseCode, String username, String comment) {
 		this.commentId = commentId;
 		this.courseCode = courseCode;
 		this.username = username;
@@ -31,7 +22,7 @@ public class Comment {
 		return comment;
 	}
 	
-	public Long getCommentId() {
+	public String getCommentId() {
 		return commentId;
 	}
 	public String getCourseCode() {
@@ -44,7 +35,7 @@ public class Comment {
 		return comment;
 	}
 	
-	public void setCommentId(Long commentId) {
+	public void setCommentId(String commentId) {
 		this.commentId = commentId;
 	}
 	public void setCourseCode(String courseCode) {
