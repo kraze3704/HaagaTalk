@@ -5,8 +5,9 @@ personal project for Server programming course
 ## TO-DO LIST
 - [ ] create required domains
   - [ ] user: what attributes do I need for firebase?
-  - [X] Course{ courseCode, courseName, teacherId, courseTime(?)}
+  - [X] Course{ courseCode, courseName, teacherId}
     - calendar implementation for course time?
+    - coursetime removed for now, may add later
   - [X] Teacher{ teacherId, firstName, lastName}
   - [X] Comments{ commentId, courseCode, username, comment}
 - [X] create Controller
