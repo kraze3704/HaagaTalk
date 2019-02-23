@@ -5,16 +5,16 @@ personal project for Server programming course
 ## TO-DO LIST
 - [ ] create required domains
   - [ ] user: what attributes do I need for firebase?
-  - [ ] Course{ courseCode, courseName, teacherId, courseTime(?)}
+  - [X] Course{ courseCode, courseName, teacherId, courseTime(?)}
     - calendar implementation for course time?
-  - [ ] Teacher{ teacherId, firstName, lastName}
-  - [ ] Comments{ commentId, courseCode, username, comment}
-- [ ] create Controller
+  - [X] Teacher{ teacherId, firstName, lastName}
+  - [X] Comments{ commentId, courseCode, username, comment}
+- [X] create Controller
 - [ ] create Views
-  - login page
-  - main(?) page
-  - signup page
-  - admin page maybe?
+  - [ ] login page
+  - [ ] main(?) page
+  - [ ] signup page
+  - [ ] admin page maybe?
 - [ ] user authentication with firebase
   - [ ] setup Spring security with firebase
   - [ ] define authority to pages
