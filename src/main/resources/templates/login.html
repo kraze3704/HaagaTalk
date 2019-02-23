@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<HEAD>
+<title>HaagaTalk! Login page</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</HEAD>
+
+<BODY>
+	<h1>Log in</h1>
+
+	<div th:if="${param.error}">
+		<h3>Invalid username or password.</h3>
+	</div>
+
+	<form th:action="@{/login}" method="POST">
+		<p>
+			<label>Username: </label><input type="text" name="username" />
+		</p>
+		<p>
+			<label>Password: </label><input type="text" name="password" />
+		</p>
+		<p>
+			<input type="submit" value="Sign in" />
+		</p>
+	</form>
+</BODY>
+
+</HTML>

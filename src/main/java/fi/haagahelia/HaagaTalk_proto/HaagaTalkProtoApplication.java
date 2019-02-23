@@ -13,7 +13,7 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private UserRepository userRepo;
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(HaagaTalkProtoApplication.class, args);
 	}
@@ -32,6 +32,9 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 		for ( User user : userRepo.findAll()) {
 			System.out.println(user);
 		}
+		System.out.println("------------------------------");
+		System.out.println("Customers found with findByUsername(\"guest\")");
+		System.out.println(userRepo.findByUsername("guest"));
 		System.out.println("------------------------------");
 	}
 }

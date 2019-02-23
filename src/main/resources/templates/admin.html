@@ -5,25 +5,17 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <HEAD>
-<title>HaagaTalk!</title>
+<title>HaagaTalk! ADMIN PAGE</title>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
 	th:href="@{css/bootstrap.min.css}" />
 </HEAD>
 
 <BODY>
-	<h1>insert app here</h1>
-	
-	<div sec:authorize="isAuthenticated()">
+	<div>ADMIN PAGE</div>
+	<div>
 		<form th:action="@{/logout}" method="POST">
-			<span th:inline="text">Hi [[${#httpServletRequest.remoteUser}]]!</span>
 			<input type="submit" value="log out" />
 		</form>
-		
-		<a href="/admin">to ADMIN page</a>
-	</div>
-	
-	<div sec:authorize="isAnonymous()">
-		<a href="/login">to login page</a>
 	</div>
 </BODY>
 

@@ -10,4 +10,14 @@ public class HTController {
 	public String index() {
 		return "index";
 	}
+	
+	@GetMapping("/admin")
+	public String Admin() {
+		return "admin";
+	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 }

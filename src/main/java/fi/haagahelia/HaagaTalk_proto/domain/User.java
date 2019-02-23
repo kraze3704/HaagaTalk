@@ -1,6 +1,7 @@
 package fi.haagahelia.HaagaTalk_proto.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class User {
 
@@ -14,12 +15,12 @@ public class User {
 	public User() {}
 	public User(String username, String password) {
 		this.username = username;
-		this.password = password;
+		setPassword(password);
 		this.role = "USER";
 	}
 	public User(String username, String password, String role) {
 		this.username = username;
-		this.password = password;
+		setPassword(password);
 		this.role = role;
 	}
 	
@@ -37,6 +38,9 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	public String getRole() {
+		return role;
+	}
 	
 	public void setId(String id) {
 		this.id = id;
@@ -45,7 +49,11 @@ public class User {
 		this.username = username;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		String encoded = new BCryptPasswordEncoder().encode(password);
+		this.password = encoded;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }
