@@ -44,5 +44,8 @@ personal project for Server programming course
 - [Basic writing and formatting README.md](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
 - [firebase authentication](https://firebase.google.com/docs/auth/admin/manage-users)
 - [MongoDB documentation](http://mongodb.github.io/mongo-java-driver/?_ga=2.72866069.703837665.1550930650-1251151850.1549826134)
+  - [One-to-Many-Relations](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/)
+  - [Query documents](https://docs.mongodb.com/manual/tutorial/query-documents/)
 - [Accessing Data with MongoDB - Spring boot](https://spring.io/guides/gs/accessing-data-mongodb/)
 - [Installing and running MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#run-mongodb-from-cmd)
+- [Configuring logout in Spring](https://www.baeldung.com/spring-security-logout)
