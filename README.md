@@ -16,11 +16,11 @@ personal project for Server programming course
   - [X] main(?) page
   - [X] signup page
   - [X] admin page maybe?
-- [ ] Create repositories for all domains
+- [X] Create repositories for all domains
   - [X] userRepository
-  - [ ] teacherRepository
-  - [ ] courseRepository
-  - [ ] commentRepository
+  - [X] teacherRepository
+  - [X] courseRepository
+  - [X] commentRepository
 - [ ] Create a page to show all the comments of a course
 - [ ] Create a page to add a comment to a course
 - [ ] change user authentication to firebase

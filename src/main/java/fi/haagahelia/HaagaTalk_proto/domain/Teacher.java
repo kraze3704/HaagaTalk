@@ -9,8 +9,7 @@ public class Teacher {
 	private String lastName;
 	
 	public Teacher() {}
-	public Teacher(String teacherId, String firstName, String lastName) {
-		this.teacherId = teacherId;
+	public Teacher(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}

@@ -5,13 +5,13 @@ import org.springframework.data.annotation.Id;
 public class Comment {
 	@Id
 	private String commentId;
+	
 	private String courseCode;
 	private String username;
 	private String comment;
 	
 	public Comment() {}
-	public Comment(String commentId, String courseCode, String username, String comment) {
-		this.commentId = commentId;
+	public Comment(String courseCode, String username, String comment) {
 		this.courseCode = courseCode;
 		this.username = username;
 		this.comment = comment;
