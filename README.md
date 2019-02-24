@@ -49,3 +49,4 @@ personal project for Server programming course
 - [Accessing Data with MongoDB - Spring boot](https://spring.io/guides/gs/accessing-data-mongodb/)
 - [Installing and running MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#run-mongodb-from-cmd)
 - [Configuring logout in Spring](https://www.baeldung.com/spring-security-logout)
+- [Standard URL syntax - thymeleaf](https://www.thymeleaf.org/doc/articles/standardurlsyntax.html)

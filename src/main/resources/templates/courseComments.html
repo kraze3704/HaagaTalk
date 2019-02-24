@@ -24,13 +24,11 @@
 	<div sec:authorize="isAnonymous()">
 		<a href="/login">to login page</a>
 	</div>
+	
+	<a th:href="@{/}">Back</a>
 
 	<div>
-		<h1>Course</h1>
-		<ul th:each="course : ${Courses}">
-			<li><a th:text="${course.courseName}"
-				th:href="@{/{courseCode}(courseCode=${course.courseCode})}">course</a></li>
-		</ul>
+		<h1 th:text="${CourseCode}">CourseCode</h1>
 	</div>
 </BODY>
 
