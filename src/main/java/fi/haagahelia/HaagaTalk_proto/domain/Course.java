@@ -14,7 +14,7 @@ public class Course {
 		this.courseName = courseName;
 		this.teacherId = teacherId;
 	}
-	
+
 	public String getCourseCode() {
 		return courseCode;
 	}
@@ -24,6 +24,7 @@ public class Course {
 	public String getTeacherId() {
 		return teacherId;
 	}
+	
 	
 	public void setCourseCode(String courseCode) {
 		this.courseCode = courseCode;

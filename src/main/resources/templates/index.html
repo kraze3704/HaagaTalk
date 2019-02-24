@@ -11,19 +11,25 @@
 </HEAD>
 
 <BODY>
-	<h1>insert app here</h1>
-	
 	<div sec:authorize="isAuthenticated()">
 		<form th:action="@{/logout}" method="POST">
-			<span th:inline="text">Hi [[${#httpServletRequest.remoteUser}]]!</span>
-			<input type="submit" value="log out" />
+			<span th:inline="text">Hi
+				[[${#httpServletRequest.remoteUser}]]!</span> <input type="submit"
+				value="log out" />
 		</form>
-		
+
 		<a href="/admin">to ADMIN page</a>
 	</div>
-	
+
 	<div sec:authorize="isAnonymous()">
 		<a href="/login">to login page</a>
+	</div>
+
+	<div>
+		<h1>Course</h1>
+		<ul th:each="course : ${Courses}">
+			<li th:text="${course.courseName}">course</li>
+		</ul>
 	</div>
 </BODY>
 
