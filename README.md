@@ -21,7 +21,7 @@ personal project for Server programming course
   - [X] teacherRepository
   - [X] courseRepository
   - [X] commentRepository
-- [ ] Create a page to show all the comments of a course
+- [X] Create a page to show all the comments of a course
 - [ ] Create a page to add a comment to a course
 - [ ] change user authentication to firebase
   - [ ] setup Spring security with firebase
@@ -34,6 +34,7 @@ personal project for Server programming course
 
 - mongoDB requires the id type to be a String, not Long
 - springSecurity5 requires the password to be encoded in any way
+- concating th:text works with |. example: "|${var1} no need to add 's! ${var2}|"
 
 - I don't need authentication for everyone for now, just ADMIN for console?
 - can I configure the login page to be a popup instead of a whole page?
