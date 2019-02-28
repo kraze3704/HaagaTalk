@@ -29,12 +29,38 @@
 
 	<div>
 		<h1 th:text="${Course.courseName}">Course name</h1>
-		
+
 		<ul th:each="comment : ${Comments}">
 			<li><span th:text="|${comment.username}: ${comment.comment}|">username:
 					comment</span><a>[ edit / delete / like ]</a></li>
 		</ul>
 	</div>
+
+	<div>
+		<form name="commentForm" th:object="${COMMENT}" th:action="@{addComment}" action="#"
+			method="POST">
+			<a id="courseCode" th:text="${Course.courseCode}">courseCode</a>
+			<br />
+			<a id="username" th:text="${#httpServletRequest.remoteUser}">username</a>
+			<br />
+			<label for="comment">Comment</label>
+			<input type="text" id="text" th:field="*{comment}" />
+			<button type="button" onClick="formSubmit()">Enter</button>
+		</form>
+	</div>
 </BODY>
+
+<script type="text/javascript">
+	const courseCode = document.querySelector("#courseCode").innerText;
+	let currentUser = document.querySelector("#username").innerText;
+	
+	if(currentUser == "")
+		currentUser = "Anonymous";
+	
+	function formSubmit(){
+		console.log(courseCode, currentUser);
+		document.commentForm.submit();
+	};
+</script>
 
 </HTML>
