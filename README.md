@@ -22,7 +22,8 @@ personal project for Server programming course
   - [X] courseRepository
   - [X] commentRepository
 - [X] Create a page to show all the comments of a course
-- [ ] Create a page to add a comment to a course
+- [X] Create a page to add a comment to a course
+  - [ ] Create validation when adding comments
 - [ ] change user authentication to firebase
   - [ ] setup Spring security with firebase
   - [ ] define authority to pages
@@ -35,6 +36,7 @@ personal project for Server programming course
 - mongoDB requires the id type to be a String, not Long
 - springSecurity5 requires the password to be encoded in any way
 - concating th:text works with |. example: "|${var1} no need to add 's! ${var2}|"
+- thymeleaf form th:field technically creates a name attribute with the given value. Can I design this in another way? Course Comment add function<
 
 - I don't need authentication for everyone for now, just ADMIN for console?
 - can I configure the login page to be a popup instead of a whole page?
