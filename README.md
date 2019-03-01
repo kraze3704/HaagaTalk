@@ -21,9 +21,13 @@ personal project for Server programming course
   - [X] teacherRepository
   - [X] courseRepository
   - [X] commentRepository
-- [X] Create a page to show all the comments of a course
-- [X] Create a page to add a comment to a course
-  - [ ] Create validation when adding comments
+- [X] Create a page to show all the comments of a course  
+- [X] Create add comment feature
+- [ ] Create validation when adding comments
+- [ ] Create delete comment feature
+- [ ] Create edit comment feature
+  - [ ] Make so only ADMIN and user can edit?
+  - how do I deal with anonymous comments in this case?
   
 - [ ] JOIN collections from mongo db?
   - do I need this?
