@@ -24,6 +24,11 @@ personal project for Server programming course
 - [X] Create a page to show all the comments of a course
 - [X] Create a page to add a comment to a course
   - [ ] Create validation when adding comments
+  
+- [ ] JOIN collections from mongo db?
+  - do I need this?
+  - different data structure for mongo db maybe? maybe?
+  
 - [ ] change user authentication to firebase
   - [ ] setup Spring security with firebase
   - [ ] define authority to pages
@@ -42,6 +47,9 @@ personal project for Server programming course
 - can I configure the login page to be a popup instead of a whole page?
 - config redirection after logout session => logoutSuccessUrl() in WebConfig
 
+- study @document(collection="collection_name") annotation
+- may have to think of a different database structure for mongoDB?
+
 ### References
 
 - [Basic writing and formatting README.md](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
@@ -53,3 +61,4 @@ personal project for Server programming course
 - [Installing and running MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#run-mongodb-from-cmd)
 - [Configuring logout in Spring](https://www.baeldung.com/spring-security-logout)
 - [Standard URL syntax - thymeleaf](https://www.thymeleaf.org/doc/articles/standardurlsyntax.html)
+- [W3schools: Node.js MongoDB](https://www.w3schools.com/nodejs/nodejs_mongodb.asp)
