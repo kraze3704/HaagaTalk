@@ -30,10 +30,24 @@
 	<div>
 		<h1 th:text="${Course.courseName}">Course name</h1>
 
-		<ul th:each="comment : ${Comments}">
-			<li><span th:text="|${comment.username}: ${comment.comment}|">username:
-					comment</span><a>[ edit / delete / like ]</a></li>
-		</ul>
+		<table>
+			<tr>
+				<th>username</th>
+				<th>comment</th>
+			</tr>
+			<tr th:each="comment : ${Comments}">
+				<td th:text="${comment.username}">username</td>
+				<td th:text="${comment.comment}">comment</td>
+				<td sec:authorize="hasAuthority('ADMIN')">
+					<a th:href="@{/{coursecode}/delete/{id}(coursecode=${Course.courseCode}, id=${comment.commentId})}">delete</a>
+				</td>
+			</tr>
+		</table>
+		
+<!-- old comment	
+<span th:text="|${comment.username}: ${comment.comment}|">username:comment</span>
+<a>[ edit / delete / like ]</a>
+-->
 	</div>
 
 	<div>

@@ -35,11 +35,30 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		/*
 		userRepo.deleteAll();
 		// test user data
 		userRepo.save(new User("guest", "guest"));
 		userRepo.save(new User("admin", "admin", "ADMIN"));
+		
+		teacherRepo.deleteAll();
+		// test teacher data
+		Teacher juhaH = new Teacher("Juha", "Hinkula");
+		teacherRepo.save(juhaH);
+		teacherRepo.save(new Teacher("Kari", "Silpiö"));
+		
+		courseRepo.deleteAll();
+		courseRepo.save(new Course("SWD4TF021-3002", "Server Programming", juhaH.getTeacherId()));
+		courseRepo.save(new Course("SWD4TF023", "Software Development Technologies", juhaH.getTeacherId()));
 
+		commentRepo.deleteAll();
+		List<Course> testCourse1 = courseRepo.findByCourseName("Server Programming");
+		List<Course> testCourse2 = courseRepo.findByCourseName("Software Development Technologies");
+		User testUser1 = userRepo.findByUsername("admin");
+		commentRepo.save(new Comment(testCourse1.get(0).getCourseCode(), testUser1.getUsername(), "test comment"));
+		commentRepo.save(new Comment(testCourse2.get(0).getCourseCode(), "annoymous", "allo"));
+		*/
+		
 		// print all user data in db
 		System.out.println("Users found with findAll()");
 		System.out.println("------------------------------");
@@ -47,13 +66,6 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 			System.out.println(user);
 		}
 		System.out.println("");
-
-		teacherRepo.deleteAll();
-		// test teacher data
-		Teacher juhaH = new Teacher("Juha", "Hinkula");
-		teacherRepo.save(juhaH);
-		teacherRepo.save(new Teacher("Kari", "Silpiö"));
-
 		// print all teacher data in db
 		System.out.println("Teachers found with findAll()");
 		System.out.println("------------------------------");
@@ -61,23 +73,11 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 			System.out.println(teacher);
 		}
 		System.out.println("");
-
-		courseRepo.deleteAll();
-		courseRepo.save(new Course("SWD4TF021-3002", "Server Programming", juhaH.getTeacherId()));
-		courseRepo.save(new Course("SWD4TF023", "Software Development Technologies", juhaH.getTeacherId()));
 		System.out.println("Courses found with findAll()");
 		System.out.println("------------------------------");
 		for (Course course : courseRepo.findAll()) {
 			System.out.println(course);
 		}
 		System.out.println("");
-		
-		commentRepo.deleteAll();
-		List<Course> testCourse1 = courseRepo.findByCourseName("Server Programming");
-		List<Course> testCourse2 = courseRepo.findByCourseName("Software Development Technologies");
-		User testUser1 = userRepo.findByUsername("admin");
-		commentRepo.save(new Comment(testCourse1.get(0).getCourseCode(), testUser1.getUsername(), "test comment"));
-		commentRepo.save(new Comment(testCourse2.get(0).getCourseCode(), "annoymous", "allo"));
-		
 	}
 }

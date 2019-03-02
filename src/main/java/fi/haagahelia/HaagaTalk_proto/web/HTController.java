@@ -57,6 +57,12 @@ public class HTController {
 		return "redirect:" + comment.getCourseCode();
 	}
 	
+	@GetMapping("/{courseCode}/delete/{id}")
+	public String commentDelete(@PathVariable("id") String id, @PathVariable("courseCode") String courseCode) {
+		commentRepo.deleteById(id);
+		return "redirect:/" + courseCode;
+	}
+	
 	@GetMapping("/admin/rest/users")
 	public @ResponseBody List<User> userListREST() {
 		return userRepo.findAll();

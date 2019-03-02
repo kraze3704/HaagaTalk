@@ -24,9 +24,9 @@ personal project for Server programming course
 - [X] Create a page to show all the comments of a course  
 - [X] Create add comment feature
 - [ ] Create validation when adding comments
-- [ ] Create delete comment feature
+- [X] Create delete comment feature
 - [ ] Create edit comment feature
-  - [ ] Make so only ADMIN and user can edit?
+  - [ ] Make so only ADMIN and user can edit/delete?
   - how do I deal with anonymous comments in this case?
   
 - [ ] JOIN collections from mongo db?
@@ -57,12 +57,14 @@ personal project for Server programming course
 ### References
 
 - [Basic writing and formatting README.md](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
-- [firebase authentication](https://firebase.google.com/docs/auth/admin/manage-users)
+- [W3schools: Node.js MongoDB](https://www.w3schools.com/nodejs/nodejs_mongodb.asp)
 - [MongoDB documentation](http://mongodb.github.io/mongo-java-driver/?_ga=2.72866069.703837665.1550930650-1251151850.1549826134)
   - [One-to-Many-Relations](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/)
   - [Query documents](https://docs.mongodb.com/manual/tutorial/query-documents/)
+  - [MongoDB CRUD operations](https://docs.mongodb.com/v3.2/tutorial/remove-documents/)
 - [Accessing Data with MongoDB - Spring boot](https://spring.io/guides/gs/accessing-data-mongodb/)
 - [Installing and running MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#run-mongodb-from-cmd)
 - [Configuring logout in Spring](https://www.baeldung.com/spring-security-logout)
 - [Standard URL syntax - thymeleaf](https://www.thymeleaf.org/doc/articles/standardurlsyntax.html)
-- [W3schools: Node.js MongoDB](https://www.w3schools.com/nodejs/nodejs_mongodb.asp)
+- [Heroku dev center: configuration and config vars](https://devcenter.heroku.com/articles/config-vars)
+- [firebase authentication](https://firebase.google.com/docs/auth/admin/manage-users)
