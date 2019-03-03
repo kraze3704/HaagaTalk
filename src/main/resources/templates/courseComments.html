@@ -20,7 +20,7 @@
 
 		<a href="/admin">to ADMIN page</a>
 	</div>
-
+	
 	<div sec:authorize="isAnonymous()">
 		<a href="/login">to login page</a>
 	</div>
@@ -34,12 +34,14 @@
 			<tr>
 				<th>username</th>
 				<th>comment</th>
+				<th sec:authorize="isAuthenticated()">Authenticated</th>
 			</tr>
 			<tr th:each="comment : ${Comments}">
 				<td th:text="${comment.username}">username</td>
 				<td th:text="${comment.comment}">comment</td>
-				<td sec:authorize="hasAuthority('ADMIN')">
-					<a th:href="@{/{coursecode}/delete/{id}(coursecode=${Course.courseCode}, id=${comment.commentId})}">delete</a>
+				<td sec:authorize="isAuthenticated()">
+					<a style="color: red; font-style: italic">edit(need user validation)</a>
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{coursecode}/delete/{id}(coursecode=${Course.courseCode}, id=${comment.commentId})}">delete</a>
 				</td>
 			</tr>
 		</table>
@@ -55,7 +57,7 @@
 			method="POST">
 			<input type="hidden" th:value="${Course.courseCode}" name="courseCode" />
 			<input sec:authorize="isAuthenticated()" type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" />
-			<input sec:authorize="!isAuthenticated()" type="hidden" th:value="Anonymous" name="username" />
+			<input sec:authorize="!isAuthenticated()" type="hidden" th:value="anonymous" name="username" />
 			<label for="comment">Comment</label>
 			<input type="text" id="text" th:field="*{comment}" />
 			<input type="submit" value="ENTER" />
