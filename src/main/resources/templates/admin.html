@@ -5,18 +5,16 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <HEAD>
-<title>HaagaTalk! ADMIN PAGE</title>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}" />
+	<title>HaagaTalk! ADMIN PAGE</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </HEAD>
 
 <BODY>
-	<div>ADMIN PAGE</div>
-	<div>
-		<form th:action="@{/logout}" method="POST">
-			<input type="submit" value="log out" />
-		</form>
-	</div>
+
+	<div th:replace="navbar :: NAV_MENU"></div>
+
+	<div class="container">ADMIN PAGE</div>
+	
 </BODY>
 
 </HTML>

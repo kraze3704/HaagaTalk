@@ -5,63 +5,58 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <HEAD>
-<title>HaagaTalk!</title>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}" />
+	<title>HaagaTalk!</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css" />
 </HEAD>
 
 <BODY>
-	<div sec:authorize="isAuthenticated()">
-		<form th:action="@{/logout}" method="POST">
-			<span th:inline="text">Hi
-				[[${#httpServletRequest.remoteUser}]]!</span> <input type="submit"
-				value="log out" />
-		</form>
 
-		<a href="/admin">to ADMIN page</a>
-	</div>
+	<div th:replace="navbar :: NAV_MENU"></div>
 	
-	<div sec:authorize="isAnonymous()">
-		<a href="/login">to login page</a>
-	</div>
-
-	<a th:href="@{/}">Back</a>
-
-	<div>
+	<div class="container mt-2">
 		<h1 th:text="${Course.courseName}">Course name</h1>
 
-		<table>
-			<tr>
-				<th>username</th>
-				<th>comment</th>
-				<th sec:authorize="isAuthenticated()">Authenticated</th>
-			</tr>
-			<tr th:each="comment : ${Comments}">
-				<td th:text="${comment.username}">username</td>
-				<td th:text="${comment.comment}">comment</td>
-				<td sec:authorize="isAuthenticated()">
-					<a style="color: red; font-style: italic">edit(need user validation)</a>
-					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.commentId})}">delete</a>
-				</td>
-			</tr>
+		<table class="table table-sm">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">username</th>
+					<th scope="col">comment</th>
+					<th scope="col" sec:authorize="isAuthenticated()">Authenticated</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="comment : ${Comments}">
+					<td th:text="${comment.username}">username</td>
+					<td th:text="${comment.comment}">comment</td>
+					<td sec:authorize="isAuthenticated()">
+						<a class="errorMSG">edit(need user validation)</a>
+						<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.commentId})}">delete</a>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 		
-<!-- old comment	
+<!--/* old comment	
 <span th:text="|${comment.username}: ${comment.comment}|">username:comment</span>
 <a>[ edit / delete / like ]</a>
--->
-	</div>
+*/-->
+	<form name="commentForm" th:object="${COMMENT}" th:action="@{addComment}" action="#"
+		method="POST">
+		<input type="hidden" th:value="${Course.id}" name="courseId" />
+		<input sec:authorize="isAuthenticated()" type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" />
+		<input sec:authorize="!isAuthenticated()" type="hidden" th:value="anonymous" name="username" />
+		<div class="form-row align-items-end">
+			<div class="col">
+				<label for="comment">Comment</label>
+				<input class="form-control" type="text" id="comment" th:field="*{comment}" />
+			</div>
+			<div class="col-1">
+				<button type="submit" class="btn btn-primary">ENTER</button>
+			</div>
+		</div>
+	</form>
 
-	<div>
-		<form name="commentForm" th:object="${COMMENT}" th:action="@{addComment}" action="#"
-			method="POST">
-			<input type="hidden" th:value="${Course.id}" name="courseId" />
-			<input sec:authorize="isAuthenticated()" type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" />
-			<input sec:authorize="!isAuthenticated()" type="hidden" th:value="anonymous" name="username" />
-			<label for="comment">Comment</label>
-			<input type="text" id="text" th:field="*{comment}" />
-			<input type="submit" value="ENTER" />
-		</form>
 	</div>
 </BODY>
 

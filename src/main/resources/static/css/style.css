@@ -1,0 +1,13 @@
+html,
+body {
+  height: 100%;
+}
+
+.container {
+	margin-top: 1em;
+}
+
+.errorMSG {
+	color: red;
+	font-style: italic;
+}
