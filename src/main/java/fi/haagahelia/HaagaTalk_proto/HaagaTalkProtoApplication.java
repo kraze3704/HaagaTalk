@@ -1,5 +1,7 @@
 package fi.haagahelia.HaagaTalk_proto;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,16 +49,17 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 		teacherRepo.save(juhaH);
 		teacherRepo.save(new Teacher("Kari", "Silpiö"));
 		
+			
 		courseRepo.deleteAll();
-		courseRepo.save(new Course("SWD4TF021-3002", "Server Programming", juhaH.getTeacherId()));
-		courseRepo.save(new Course("SWD4TF023", "Software Development Technologies", juhaH.getTeacherId()));
+		courseRepo.save(new Course("SWD4TF021-3002", "Server Programming", juhaH.getId()));
+		courseRepo.save(new Course("SWD4TF023", "Software Development Technologies", juhaH.getId()));
 
 		commentRepo.deleteAll();
 		List<Course> testCourse1 = courseRepo.findByCourseName("Server Programming");
 		List<Course> testCourse2 = courseRepo.findByCourseName("Software Development Technologies");
 		User testUser1 = userRepo.findByUsername("admin");
-		commentRepo.save(new Comment(testCourse1.get(0).getCourseCode(), testUser1.getUsername(), "test comment"));
-		commentRepo.save(new Comment(testCourse2.get(0).getCourseCode(), "annoymous", "allo"));
+		commentRepo.save(new Comment(testCourse1.get(0).getId(), testUser1.getUsername(), "test comment"));
+		commentRepo.save(new Comment(testCourse2.get(0).getId(), "annoymous", "test comment"));
 		*/
 		
 		// print all user data in db

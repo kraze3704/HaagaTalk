@@ -1,10 +1,17 @@
 package fi.haagahelia.HaagaTalk_proto.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "teacher")
 public class Teacher {
+	
 	@Id
-	private String teacherId;
+	private String id;
+	
+    @Indexed(direction = IndexDirection.DESCENDING)
 	private String firstName;
 	private String lastName;
 	
@@ -19,8 +26,8 @@ public class Teacher {
 		return firstName + ", " + lastName;
 	}
 	
-	public String getTeacherId() {
-		return teacherId;
+	public String getId() {
+		return id;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -29,8 +36,8 @@ public class Teacher {
 		return lastName;
 	}
 	
-	public void setTeacherId(String teacherId) {
-		this.teacherId = teacherId;
+	public void setId(String teacherId) {
+		this.id = teacherId;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;

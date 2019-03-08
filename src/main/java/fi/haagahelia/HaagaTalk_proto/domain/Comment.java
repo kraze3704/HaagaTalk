@@ -1,18 +1,24 @@
 package fi.haagahelia.HaagaTalk_proto.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "comment")
 public class Comment {
-	@Id
-	private String commentId;
 	
-	private String courseCode;
+	@Id
+	private String id;
+	
+    @Indexed(direction = IndexDirection.DESCENDING)
+	private String courseId;
 	private String username;
 	private String comment;
 	
 	public Comment() {}
-	public Comment(String courseCode, String username, String comment) {
-		this.courseCode = courseCode;
+	public Comment(String courseId, String username, String comment) {
+		this.courseId = courseId;
 		this.username = username;
 		this.comment = comment;
 	}
@@ -23,10 +29,10 @@ public class Comment {
 	}
 	
 	public String getCommentId() {
-		return commentId;
+		return id;
 	}
-	public String getCourseCode() {
-		return courseCode;
+	public String getCourseId() {
+		return courseId;
 	}
 	public String getUsername() {
 		return username;
@@ -36,10 +42,10 @@ public class Comment {
 	}
 	
 	public void setCommentId(String commentId) {
-		this.commentId = commentId;
+		this.id = commentId;
 	}
-	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
 	}
 	public void setUsername(String username) {
 		this.username = username;

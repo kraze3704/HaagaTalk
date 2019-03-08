@@ -41,7 +41,7 @@
 				<td th:text="${comment.comment}">comment</td>
 				<td sec:authorize="isAuthenticated()">
 					<a style="color: red; font-style: italic">edit(need user validation)</a>
-					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{coursecode}/delete/{id}(coursecode=${Course.courseCode}, id=${comment.commentId})}">delete</a>
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.commentId})}">delete</a>
 				</td>
 			</tr>
 		</table>
@@ -55,7 +55,7 @@
 	<div>
 		<form name="commentForm" th:object="${COMMENT}" th:action="@{addComment}" action="#"
 			method="POST">
-			<input type="hidden" th:value="${Course.courseCode}" name="courseCode" />
+			<input type="hidden" th:value="${Course.id}" name="courseId" />
 			<input sec:authorize="isAuthenticated()" type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" />
 			<input sec:authorize="!isAuthenticated()" type="hidden" th:value="anonymous" name="username" />
 			<label for="comment">Comment</label>

@@ -29,7 +29,7 @@
 		<h1>Course</h1>
 		<ul th:each="course : ${Courses}">
 			<li><a th:text="${course.courseName}"
-				th:href="@{/{courseCode}(courseCode=${course.courseCode})}">course</a></li>
+				th:href="@{/{courseId}(courseId=${course.id})}">course</a></li>
 		</ul>
 	</div>
 	

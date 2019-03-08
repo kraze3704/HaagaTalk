@@ -1,13 +1,18 @@
 package fi.haagahelia.HaagaTalk_proto.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+@Document(collection = "user")
 public class User {
 
 	@Id
 	private String id;
 	
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
 	private String username;
 	private String password;
 	private String role;

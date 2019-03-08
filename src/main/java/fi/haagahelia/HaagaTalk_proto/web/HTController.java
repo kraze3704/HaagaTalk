@@ -43,10 +43,13 @@ public class HTController {
 		return "login";
 	}
 	
-	@GetMapping("/{courseCode}")
-	public String courseCommentPage(@PathVariable("courseCode") String courseCode, Model model) {
-		model.addAttribute("Course", courseRepo.findByCourseCode(courseCode));
-		model.addAttribute("Comments", commentRepo.findByCourseCode(courseCode));
+	@GetMapping("/{courseId}")
+	public String courseCommentPage(@PathVariable("courseId") String courseId, Model model) {
+		
+		// Optional<T> has to be unwrapped before being passed to View
+		courseRepo.findById(courseId).ifPresent(Course -> model.addAttribute("Course", Course));
+		// model.addAttribute("Course", courseRepo.findById(courseId));
+		model.addAttribute("Comments", commentRepo.findByCourseId(courseId));
 		model.addAttribute("COMMENT", new Comment());
 		return "courseComments";
 	}
@@ -54,13 +57,13 @@ public class HTController {
 	@PostMapping("/addComment")
 	public String courseCommentAdd(Comment comment) {
 		commentRepo.save(comment);
-		return "redirect:" + comment.getCourseCode();
+		return "redirect:" + comment.getCourseId();
 	}
 	
-	@GetMapping("/{courseCode}/delete/{id}")
-	public String commentDelete(@PathVariable("id") String id, @PathVariable("courseCode") String courseCode) {
+	@GetMapping("/{courseId}/delete/{id}")
+	public String commentDelete(@PathVariable("id") String id, @PathVariable("courseId") String courseId) {
 		commentRepo.deleteById(id);
-		return "redirect:/" + courseCode;
+		return "redirect:/" + courseId;
 	}
 	
 	@GetMapping("/admin/rest/users")
