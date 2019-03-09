@@ -33,12 +33,13 @@ personal project for Server programming course
   - do I need this?
   - different data structure for mongo db maybe? maybe?
   
+- [ ] bootstrap application!
+- [X] test the server with dummy data
+- [ ] deploy server and test
+
 - [ ] change user authentication to firebase
   - [ ] setup Spring security with firebase
   - [ ] define authority to pages
-- [ ] bootstrap application!
-- [ ] test the server with dummy data
-- [ ] deploy server and test
 
 ### SELF NOTES
 
