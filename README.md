@@ -25,8 +25,8 @@ personal project for Server programming course
 - [X] Create add comment feature
 - [ ] Create validation when adding comments
 - [X] Create delete comment feature
-- [ ] Create edit comment feature
-  - [ ] Make so only ADMIN and user can edit/delete?
+- [X] Create edit comment feature
+  - [X] Make so only ADMIN and user can edit/delete?
   - how do I deal with anonymous comments in this case?
   
 - [ ] JOIN collections from mongo db?
