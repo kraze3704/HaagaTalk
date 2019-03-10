@@ -30,8 +30,8 @@
 					<td th:text="${comment.username}">username</td>
 					<td th:text="${comment.comment}">comment</td>
 					<td sec:authorize="isAuthenticated()">
-						<a class="errorMSG">edit(need user validation)</a>
-						<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.commentId})}">delete</a>
+						<a th:href="@{/{courseId}/edit/{id}(courseId=${Course.id}, id=${comment.id})}">edit</a>
+						<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.id})}">delete</a>
 					</td>
 				</tr>
 			</tbody>

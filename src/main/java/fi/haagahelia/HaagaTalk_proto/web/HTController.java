@@ -66,6 +66,16 @@ public class HTController {
 		return "redirect:/" + courseId;
 	}
 	
+	@GetMapping("/{courseId}/edit/{id}")
+	public String commentEdit(@PathVariable("id") String id, @PathVariable("courseId") String courseId, Model model) {
+		// optional<T> again, need to find a different method
+		// model.addAttribute("COMMENT", commentRepo.findById(id));
+		
+		commentRepo.findById(id).ifPresent(COMMENT -> model.addAttribute("COMMENT", COMMENT));
+		// attempts to fetch requested comment, return a page according to result
+		return model.containsAttribute("COMMENT") ? "commentEdit" : "errorPage" ;
+	}
+	
 	@GetMapping("/admin/rest/users")
 	public @ResponseBody List<User> userListREST() {
 		return userRepo.findAll();

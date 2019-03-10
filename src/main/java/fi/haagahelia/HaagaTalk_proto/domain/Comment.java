@@ -28,7 +28,7 @@ public class Comment {
 		return comment;
 	}
 	
-	public String getCommentId() {
+	public String getId() {
 		return id;
 	}
 	public String getCourseId() {
@@ -41,7 +41,7 @@ public class Comment {
 		return comment;
 	}
 	
-	public void setCommentId(String commentId) {
+	public void setId(String commentId) {
 		this.id = commentId;
 	}
 	public void setCourseId(String courseId) {
