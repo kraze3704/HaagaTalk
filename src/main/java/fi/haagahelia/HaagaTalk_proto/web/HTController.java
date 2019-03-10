@@ -1,8 +1,11 @@
 package fi.haagahelia.HaagaTalk_proto.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -71,9 +74,39 @@ public class HTController {
 		// optional<T> again, need to find a different method
 		// model.addAttribute("COMMENT", commentRepo.findById(id));
 		
-		commentRepo.findById(id).ifPresent(COMMENT -> model.addAttribute("COMMENT", COMMENT));
-		// attempts to fetch requested comment, return a page according to result
-		return model.containsAttribute("COMMENT") ? "commentEdit" : "errorPage" ;
+		// commentRepo.findById(id).ifPresent(COMMENT -> model.addAttribute("COMMENT", COMMENT));
+		// attempts to fetch requested comment and save to model
+		
+		// fetch Optional<C> from db
+		Optional<Comment> checkComment = commentRepo.findById(id);
+		
+		// first check: is the comment available
+		if(checkComment.isPresent()) {
+			// get comment object from Optional object and add to model
+			Comment currentComment = checkComment.get();
+			model.addAttribute("COMMENT", currentComment);
+			
+			// get current username
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String currentUser = auth.getName();
+			// System.out.println(currentUser);
+			
+			// check if current user is admin :: currentUser == "admin" doesn't work here!
+			if(currentUser.equals("admin")) {
+				return "commentEdit";
+			} else {
+				// fetch the author of the comment for validation
+				String commentAuthor = currentComment.getUsername();
+				// if authors match render edit page, else render error page
+				return currentUser.equals(commentAuthor) ? "commentEdit" : "errorPage";
+			}
+			
+		} else {
+			// error case: comment doesn't exist
+			return "errorPage";
+		}
+		
+		// return model.containsAttribute("COMMENT") ? "commentEdit" : "errorPage";
 	}
 	
 	@GetMapping("/admin/rest/users")
