@@ -9,7 +9,8 @@
 </HEAD>
 
 <BODY>
-	<nav th:fragment="NAV_MENU" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-around">
+	<div th:fragment="NAV_MENU">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-around">
 		<a th:href="@{/}" class="navbar-brand">HaagaTalk!</a>
 	
 		<!-- display user info and greet when user is signed in -->
@@ -22,9 +23,37 @@
 	
 		<!-- display login link -->
 		<div sec:authorize="isAnonymous()">
+			<!-- old button with link to login page -->
 			<a href="/login" class="btn btn-outline-success">to login page</a>
-		</div>		
+			<!-- button to trigger Modal popup for login -->
+			<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#loginModal">Login</button>
+		</div>
 	</nav>
+	
+	<!-- Modal popup for login feature -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h4 class="modal-title w-100 font-weight-bold" id="loginTitle">Login</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body mx-3">
+					<div class="md-form mb-5">
+						<input type="text" id="username" class="form-control validate">
+						<label data-error="wrong" data-success="right" for="username">username</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	</div>
 </BODY>
 
 </HTML>
