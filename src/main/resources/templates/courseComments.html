@@ -34,8 +34,8 @@
 					<td th:text="${comment.username}">username</td>
 					<td th:text="${comment.comment}">comment</td>
 					<td sec:authorize="isAuthenticated()">
-						<a th:href="@{/{courseId}/edit/{id}(courseId=${Course.id}, id=${comment.id})}">edit</a>
-						<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.id})}">delete</a>
+						<a th:href="@{/{courseId}/edit/{id}(courseId=${Course.id}, id=${comment.id})}" class="btn btn-raised btn-warning btn-sm">edit</a>
+						<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.id})}" class="btn btn-raised btn-danger btn-sm">delete</a>
 					</td>
 				</tr>
 			</tbody>
@@ -54,15 +54,18 @@
 		<div class="form-row align-items-end">
 			<div class="col">
 				<label for="comment">Comment</label>
+				<span class="errorMSG" th:if="${param.error}">can not be empty!</span>
 				<input class="form-control" type="text" id="comment" th:field="*{comment}" />
 			</div>
 			<div class="col-1">
-				<button type="submit" class="btn btn-primary">ENTER</button>
+				<button type="submit" class="btn btn-raised btn-primary">ENTER</button>
 			</div>
 		</div>
 	</form>
 
 	</div>
+	
+	<div th:replace="footer :: JS_SRC"></div>
 </BODY>
 
 </HTML>

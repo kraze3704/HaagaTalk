@@ -11,12 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fi.haagahelia.HaagaTalk_proto.domain.Comment;
 import fi.haagahelia.HaagaTalk_proto.domain.CommentRepository;
 import fi.haagahelia.HaagaTalk_proto.domain.Course;
 import fi.haagahelia.HaagaTalk_proto.domain.CourseRepository;
+import fi.haagahelia.HaagaTalk_proto.domain.TeacherRepository;
 import fi.haagahelia.HaagaTalk_proto.domain.User;
 import fi.haagahelia.HaagaTalk_proto.domain.UserRepository;
 
@@ -24,11 +26,13 @@ import fi.haagahelia.HaagaTalk_proto.domain.UserRepository;
 public class HTController {
 	
 	@Autowired
+	UserRepository userRepo;
+	@Autowired
 	CourseRepository courseRepo;
 	@Autowired
-	CommentRepository commentRepo;
+	TeacherRepository teacherRepo;
 	@Autowired
-	UserRepository userRepo;
+	CommentRepository commentRepo;
 
 	@GetMapping("/")
 	public String index(Model model) {
@@ -37,7 +41,12 @@ public class HTController {
 	}
 	
 	@GetMapping("/admin")
-	public String Admin() {
+	public String Admin(Model model) {
+
+		model.addAttribute("COURSES", courseRepo.findAll());
+		model.addAttribute("TEACHERS", teacherRepo.findAll());
+		model.addAttribute("USERS", userRepo.findAll());
+		
 		return "admin";
 	}
 	
@@ -58,9 +67,15 @@ public class HTController {
 	}
 	
 	@PostMapping("/addComment")
-	public String courseCommentAdd(Comment comment) {
-		commentRepo.save(comment);
-		return "redirect:" + comment.getCourseId();
+	public String courseCommentAdd(Comment comment, @RequestParam(name="error", required=false) String error) {
+		// check if comment is available
+		// if comment is empty, including comment with only spaces, reload page with error param added
+		if(comment.getComment().trim().isEmpty()) {
+			return "redirect:/" + comment.getCourseId() + "?error";
+		} else {
+			commentRepo.save(comment);
+			return "redirect:/" + comment.getCourseId();
+		}
 	}
 	
 	@GetMapping("/{courseId}/delete/{id}")
@@ -91,6 +106,7 @@ public class HTController {
 			String currentUser = auth.getName();
 			// System.out.println(currentUser);
 			
+			/* no reason to allow mods to edit all comments?
 			// check if current user is admin :: currentUser == "admin" doesn't work here!
 			if(currentUser.equals("admin")) {
 				return "commentEdit";
@@ -100,10 +116,16 @@ public class HTController {
 				// if authors match render edit page, else render error page
 				return currentUser.equals(commentAuthor) ? "commentEdit" : "errorPage";
 			}
+			*/
+			
+			// fetch the author of the comment for validation
+			String commentAuthor = currentComment.getUsername();
+			// if authors match render edit page, else render error page
+			return currentUser.equals(commentAuthor) ? "commentEdit" : "errorPage";
 			
 		} else {
 			// error case: comment doesn't exist
-			return "errorPage";
+			return "EditErrorPage";
 		}
 		
 		// return model.containsAttribute("COMMENT") ? "commentEdit" : "errorPage";
