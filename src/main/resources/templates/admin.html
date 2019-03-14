@@ -23,7 +23,9 @@
 		<h4>Current courses</h4>
 		<ul>
 			<li th:each="course: ${COURSES}">
-				<span th:text="|${course.courseName} [${course.courseCode}]|"></span> <a href="#">edit</a><a href="#">delete</a>
+				<span th:text="|${course.courseName} [${course.courseCode}]|"></span>
+				<a href="#">edit</a>
+				<a th:href="@{/admin/delete/{id}(id = ${course.id}, collection = 'course')}">delete</a>
 			</li>
 		</ul>
 		<button>Add course</button>
@@ -31,7 +33,9 @@
 		<h4>Current teachers</h4>
 		<ul>
 			<li th:each="teacher: ${TEACHERS}">
-				<span th:text="|${teacher.firstName}, ${teacher.lastName}|"></span> <a href="#">edit</a><a href="">delete</a>
+				<span th:text="|${teacher.firstName}, ${teacher.lastName}|"></span>
+				<a href="#">edit</a>
+				<a th:href="@{/admin/delete/{id}(id = ${teacher.id}, collection = 'teacher')}">delete</a>
 			</li>
 		</ul>
 		<button>Add teacher</button>
@@ -40,7 +44,8 @@
 		<ul>
 			<li th:each="user: ${USERS}">
 				<span th:text="|${user.username} [${user.role}]|"></span>
-				<a href="#">edit</a><a href="">delete</a>
+				<a href="#">edit</a>
+				<a th:href="@{/admin/delete/{id}(id = ${user.id}, collection = 'user')}">delete</a>
 			</li>
 		</ul>
 		<button>Add user</button>

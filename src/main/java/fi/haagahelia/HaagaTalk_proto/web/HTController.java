@@ -50,6 +50,26 @@ public class HTController {
 		return "admin";
 	}
 	
+	@GetMapping("/admin/delete/{id}")
+	public String AdminDashboardDelete(@PathVariable("id") String id, @RequestParam(name="collection", required=true) String collection) {
+		// fetch parameter collection from delete request and execute corresponding collection
+		switch(collection) {
+			case "course":
+				courseRepo.deleteById(id);
+				break;
+			case "teacher":
+				teacherRepo.deleteById(id);
+				break;
+			case "user":
+				userRepo.deleteById(id);
+				break;
+				
+			default: // if collection name doesn't match anything return error
+				return "AdminError";
+		}
+		return "redirect:/admin";
+	}
+	
 	@GetMapping("/login")
 	public String login() {
 		return "login";
