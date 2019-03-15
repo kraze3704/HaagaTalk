@@ -87,10 +87,10 @@
 				<div class="modal-body mx-3">
 					<form id="teacherModalForm" th:object="${TEACHER}" th:action="@{/admin/add(collection = 'teacher')}" action="#" method="POST">
 						<div class="form-group">
-							<input type="text" id="firstName" th:field="*{firstName}" placeholder="first name"/>
+							<input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="first name"/>
 						</div>
 						<div class="form-group">
-							<input type="text" id="lastName" th:field="*{lastName}" placeholder="last name"/>
+							<input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="last name"/>
 						</div>
 					</form>
 				</div>

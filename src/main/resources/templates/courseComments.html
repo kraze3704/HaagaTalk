@@ -52,12 +52,12 @@
 		<input sec:authorize="isAuthenticated()" type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" />
 		<input sec:authorize="!isAuthenticated()" type="hidden" th:value="anonymous" name="username" />
 		<div class="form-row align-items-end">
-			<div class="col">
+			<div class="form-group col">
 				<label for="comment">Comment</label>
 				<span class="errorMSG" th:if="${param.error}">can not be empty!</span>
-				<input class="form-control" type="text" id="comment" th:field="*{comment}" />
+				<input type="text" class="form-control" id="comment" th:field="*{comment}" />
 			</div>
-			<div class="col-1">
+			<div class="form-group col-1">
 				<button type="submit" class="btn btn-raised btn-primary">ENTER</button>
 			</div>
 		</div>
