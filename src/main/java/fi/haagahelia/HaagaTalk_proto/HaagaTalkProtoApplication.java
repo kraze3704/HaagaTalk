@@ -36,7 +36,7 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
+		
 		/*
 		userRepo.deleteAll();
 		// test user data

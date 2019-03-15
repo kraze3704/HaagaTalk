@@ -18,6 +18,7 @@ import fi.haagahelia.HaagaTalk_proto.domain.Comment;
 import fi.haagahelia.HaagaTalk_proto.domain.CommentRepository;
 import fi.haagahelia.HaagaTalk_proto.domain.Course;
 import fi.haagahelia.HaagaTalk_proto.domain.CourseRepository;
+import fi.haagahelia.HaagaTalk_proto.domain.Teacher;
 import fi.haagahelia.HaagaTalk_proto.domain.TeacherRepository;
 import fi.haagahelia.HaagaTalk_proto.domain.User;
 import fi.haagahelia.HaagaTalk_proto.domain.UserRepository;
@@ -42,10 +43,14 @@ public class HTController {
 	
 	@GetMapping("/admin")
 	public String Admin(Model model) {
-
+		// findAll() for collections
 		model.addAttribute("COURSES", courseRepo.findAll());
 		model.addAttribute("TEACHERS", teacherRepo.findAll());
 		model.addAttribute("USERS", userRepo.findAll());
+		// passing object for add/edit function
+		model.addAttribute("COURSE", new Course());
+		model.addAttribute("TEACHER", new Teacher());
+		model.addAttribute("USER", new User());
 		
 		return "admin";
 	}
@@ -65,6 +70,25 @@ public class HTController {
 				break;
 				
 			default: // if collection name doesn't match anything return error
+				return "AdminError";
+		}
+		return "redirect:/admin";
+	}
+	
+	@PostMapping("/admin/add")
+	public String AdminDashboardAdd(User user, Teacher teacher, Course course, @RequestParam(name="collection", required=true) String collection) {
+		// fetch parameter collection from link and add to corresponding collection
+		switch(collection) {
+			case "course":
+				courseRepo.save(course);
+				break;
+			case "teacher":
+				teacherRepo.save(teacher);
+				break;
+			case "User":
+				userRepo.save(user);
+				break;
+			default:
 				return "AdminError";
 		}
 		return "redirect:/admin";
