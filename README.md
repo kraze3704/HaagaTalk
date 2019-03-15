@@ -3,6 +3,25 @@
 personal project for Server programming course
 
 ## TO-DO LIST
+
+- [ ] finish admin dashboard
+  - [ ] edit feature for collections
+
+- [ ] validations for add/edit: both admin dashboard & course pages
+  - [ ] front-end side
+  - [ ] back-end side
+  
+- [ ] clean up code, add comment if necessary
+
+- [ ] js chatbox?
+  
+- [ ] JOIN collections from mongo db?
+  - editing/deleting documents from collection causes 'empty' links in my collection. need a solution for this.
+
+- [ ] change user authentication to firebase
+  - [ ] setup Spring security with firebase
+  - [ ] define authority to pages
+
 - [X] create required domains
   - [X] user: { id, username, password, role }
   - [X] Course{ courseCode, courseName, teacherId}
@@ -23,23 +42,16 @@ personal project for Server programming course
   - [X] commentRepository
 - [X] Create a page to show all the comments of a course  
 - [X] Create add comment feature
-- [ ] Create validation when adding comments
+- [X] Create validation when adding comments
 - [X] Create delete comment feature
 - [X] Create edit comment feature
   - [X] Make so only ADMIN and user can edit/delete?
   - how do I deal with anonymous comments in this case?
   
-- [ ] JOIN collections from mongo db?
-  - do I need this?
-  - different data structure for mongo db maybe? maybe?
-  
 - [X] bootstrap application!
 - [X] test the server with dummy data
 - [X] deploy server and test
 
-- [ ] change user authentication to firebase
-  - [ ] setup Spring security with firebase
-  - [ ] define authority to pages
 
 ### SELF NOTES
 
@@ -69,3 +81,6 @@ personal project for Server programming course
 - [Standard URL syntax - thymeleaf](https://www.thymeleaf.org/doc/articles/standardurlsyntax.html)
 - [Heroku dev center: configuration and config vars](https://devcenter.heroku.com/articles/config-vars)
 - [firebase authentication](https://firebase.google.com/docs/auth/admin/manage-users)
+
+- [Thymeleaf tutorial documentation](https://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#introducing-thymeleaf)
+- [Material Design for Bootstrap documentation](https://fezvrasta.github.io/bootstrap-material-design/docs/4.0/material-design/forms/)
