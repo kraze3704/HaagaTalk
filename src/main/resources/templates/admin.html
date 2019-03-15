@@ -66,10 +66,25 @@
 					</button>
 				</div>
 				<div class="modal-body mx-3">
-					Modal course body
+					<form id="courseModalForm" th:object="${COURSE}" th:action="@{/admin/add(collection = 'course')}" action="#" method="POST">
+						<div class="form-group">
+							<label for="courseCode" class="bmd-label-static">course code</label>
+							<input type="text" class="form-control" id="courseCode" th:field="*{courseCode}" />
+						</div>
+						<div class="form-group">
+							<label for="courseName" class="bmd-label-static">course name</label>
+							<input type="text" class="form-control" id="courseName" th:field="*{courseName}" />
+						</div>
+						<div class="form-group">
+							<label for="courseTeacher" class="bmd-label-static">teacher</label>
+							<select class="form-control" id="courseTeacher" th:field="*{teacherId}">
+								<option th:each="teacher : ${TEACHERS}" value="${teacher.teacherId}" th:text="|${teacher.firstName} ${teacher.lastName}|"></option>
+							</select>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-raised btn-success btn-block" form="#">Submit</button>
+					<button type="submit" class="btn btn-raised btn-success btn-block" form="courseModalForm">Submit</button>
 				</div>
 			</div>
 		</div>
