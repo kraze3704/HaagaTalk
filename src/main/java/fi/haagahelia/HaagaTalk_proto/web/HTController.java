@@ -85,7 +85,7 @@ public class HTController {
 			case "teacher":
 				teacherRepo.save(teacher);
 				break;
-			case "User":
+			case "user":
 				userRepo.save(user);
 				break;
 			default:

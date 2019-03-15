@@ -79,7 +79,7 @@
 		<div class="modal-dialog p-5" role="document">
 			<div class="modal-content">
 				<div class="modal-header text-center">
-					<h4 class="modal title w-100 font-weight-bold" id="courseModalTitle">course modal title</h4>
+					<h4 class="modal title w-100 font-weight-bold" id="courseModalTitle">teacher modal title</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -87,10 +87,12 @@
 				<div class="modal-body mx-3">
 					<form id="teacherModalForm" th:object="${TEACHER}" th:action="@{/admin/add(collection = 'teacher')}" action="#" method="POST">
 						<div class="form-group">
-							<input type="text" class="form-control" id="firstName" th:field="*{firstName}" placeholder="first name"/>
+							<label for="firstName" class="bmd-label-static">first name</label>
+							<input type="text" class="form-control" id="firstName" th:field="*{firstName}" />
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="lastName" th:field="*{lastName}" placeholder="last name"/>
+							<label for="lastName" class="bmd-label-static">last name</label>
+							<input type="text" class="form-control" id="lastName" th:field="*{lastName}" />
 						</div>
 					</form>
 				</div>
@@ -105,16 +107,32 @@
 		<div class="modal-dialog p-5" role="document">
 			<div class="modal-content">
 				<div class="modal-header text-center">
-					<h4 class="modal title w-100 font-weight-bold" id="courseModalTitle">course modal title</h4>
+					<h4 class="modal title w-100 font-weight-bold" id="courseModalTitle">user modal title</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body mx-3">
-					Modal user body
+					<form id="userModalForm" th:object="${USER}" th:action="@{/admin/add(collection = 'user')}" action="#" method="POST">
+						<div class="form-group">
+							<label for="username" class="bmd-label-static">username</label>
+							<input type="text" class="form-control" id="username" th:field="*{username}" />
+						</div>
+						<div class="form-group">
+							<label for="password" class="bmd-label-static">password</label>
+							<input type="text" class="form-control" id="password" th:field="*{password}" />
+						</div>
+						<div class="form-group">
+							<label for="role" class="bmd-label-static">role</label>
+							<select class="form-control" id="role" th:field="*{role}">
+								<option value="USER">user</option>
+								<option value="ADMIN">admin</option>
+							</select>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-raised btn-success btn-block" form="#">Submit</button>
+					<button type="submit" class="btn btn-raised btn-success btn-block" form="userModalForm">Submit</button>
 				</div>
 			</div>
 		</div>
