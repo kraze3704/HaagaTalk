@@ -23,16 +23,16 @@
 
 		<table class="table table-sm">
 			<thead class="thead-dark">
-				<tr>
-					<th scope="col">username</th>
-					<th scope="col">comment</th>
+				<tr class="d-flex">
+					<th class="col-2" scope="col">username</th>
+					<th class="col" scope="col">comment</th>
 					<th scope="col" sec:authorize="isAuthenticated()">Authenticated</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="comment : ${Comments}">
-					<td th:text="${comment.username}">username</td>
-					<td th:text="${comment.comment}">comment</td>
+				<tr class="d-flex" th:each="comment : ${Comments}">
+					<td class="col-2" th:text="${comment.username}">username</td>
+					<td class="col" th:text="${comment.comment}">comment</td>
 					<td sec:authorize="isAuthenticated()">
 						<a th:href="@{/{courseId}/edit/{id}(courseId=${Course.id}, id=${comment.id})}" class="btn btn-raised btn-warning btn-sm">edit</a>
 						<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.id})}" class="btn btn-raised btn-danger btn-sm">delete</a>
