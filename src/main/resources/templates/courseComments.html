@@ -41,6 +41,22 @@
 			</tbody>
 		</table>
 		
+		<div>
+			<div class="row">
+				<div class="col-2"><span style="font-weight:bold">username</span></div>
+				<div class="col"><span style="font-weight:bold">comment</span></div>
+				<div class="col-2" sec:authorize="isAuthenticated()"><span style="font-weight:bold">Authenticated</span></div>
+			</div>
+			<div class="row" th:each="comment : ${Comments}">
+				<div class="col-2" th:text="${comment.username}">username</div>
+				<div class="col" th:text="${comment.comment}">comment</div>
+				<div class="col-2" sec:authorize="isAuthenticated()">
+					<a th:href="@{/{courseId}/edit/{id}(courseId=${Course.id}, id=${comment.id})}" class="btn btn-raised btn-warning btn-sm">edit</a>
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/{courseId}/delete/{id}(courseId=${Course.id}, id=${comment.id})}" class="btn btn-raised btn-danger btn-sm">delete</a>
+				</div>
+			</div>
+		</div>
+		
 		<hr>
 <!--/* old comment	
 <span th:text="|${comment.username}: ${comment.comment}|">username:comment</span>
