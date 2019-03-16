@@ -45,17 +45,52 @@
 		
 		<h4>Current Users</h4>
 		<ul>
+			<li class="row">
+				<div class="col">
+					<h4>username</h4>
+				</div>
+				<div class="col">
+					<h4>password</h4>
+				</div>
+				<div class="col">
+					<h4>role</h4>
+				</div>
+				<div class="col">
+					<span>buttons</span>
+				</div>
+			</li>
 			<li th:each="user: ${USERS}">
+				<form class="form-row" th:object="${user}" th:action="@{/admin/add(collection = 'user')}" action="#" method="POST">
+					<input type="hidden" name="id" th:value="*{id}" />
+					<div class="col">
+						<input type="text" class="form-control" name="username" th:value="*{username}" />
+					</div>
+					<div class="col">
+						<input type="text" class="form-control" name="password" th:value="*{PWDecoded}" />
+					</div>
+					<div class="col">
+						<select class="custom-select" name="role" th:value="*{role}">
+							<option th:value="USER">user</option>
+							<option th:value="ADMIN" th:selected="${user.role.equals('ADMIN')}">admin</option>
+						</select>
+					</div>
+					<div class="col">
+						<input class="btn btn-raised btn-success" type="submit" value="save" />
+						<a class="btn btn-raised btn-danger" th:href="@{/admin/delete/{id}(id = *{id}, collection = 'user')}">delete</a>
+					</div>
+				</form>
+				<!--/* old li attribute
 				<span th:text="|${user.username} [${user.role}]|"></span>
 				<a href="#">edit</a>
 				<a th:href="@{/admin/delete/{id}(id = ${user.id}, collection = 'user')}">delete</a>
+				*/-->
 			</li>
 		</ul>
 		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#userModal">add user</button>
 	</div>
 	
 	
-	<!-- Modals for adding / editing -->
+	<!-- Modals for adding  -->
 	<div class="modal fade" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="courseModal" aria-hidden="true">
 		<div class="modal-dialog p-5" role="document">
 			<div class="modal-content">

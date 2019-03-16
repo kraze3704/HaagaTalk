@@ -15,16 +15,19 @@ public class User {
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
 	private String username;
 	private String password;
+	private String PWDecoded;
 	private String role;
 	
 	public User() {}
 	public User(String username, String password) {
 		this.username = username;
+		this.PWDecoded = password;
 		setPassword(password);
 		this.role = "USER";
 	}
 	public User(String username, String password, String role) {
 		this.username = username;
+		this.PWDecoded = password;
 		setPassword(password);
 		this.role = role;
 	}
@@ -46,6 +49,9 @@ public class User {
 	public String getRole() {
 		return role;
 	}
+	public String getPWDecoded() {
+		return PWDecoded;
+	}
 	
 	public void setId(String id) {
 		this.id = id;
@@ -54,11 +60,15 @@ public class User {
 		this.username = username;
 	}
 	public void setPassword(String password) {
+		this.PWDecoded = password; // store password before encoding :: other solutions?
 		String encoded = new BCryptPasswordEncoder().encode(password);
 		this.password = encoded;
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public void setPWDecoded(String password_de) {
+		this.PWDecoded = password_de;
 	}
 	
 }

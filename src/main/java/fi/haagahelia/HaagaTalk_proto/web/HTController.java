@@ -165,7 +165,7 @@ public class HTController {
 			// fetch the author of the comment for validation
 			String commentAuthor = currentComment.getUsername();
 			// if authors match render edit page, else render error page
-			return currentUser.equals(commentAuthor) ? "commentEdit" : "errorPage";
+			return currentUser.equals(commentAuthor) ? "commentEdit" : "EditErrorPage";
 			
 		} else {
 			// error case: comment doesn't exist
