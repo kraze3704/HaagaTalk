@@ -34,6 +34,7 @@
 */-->
 		
 		<h4>Current teachers</h4>
+		<!--/* list without edit function
 		<ul>
 			<li th:each="teacher: ${TEACHERS}">
 				<span th:text="|${teacher.firstName}, ${teacher.lastName}|"></span>
@@ -41,6 +42,36 @@
 				<a th:href="@{/admin/delete/{id}(id = ${teacher.id}, collection = 'teacher')}">delete</a>
 			</li>
 		</ul>
+		*/-->
+		<ul>
+			<li class="row">
+				<div class="col">
+					<h4>first name</h4>
+				</div>
+				<div class="col">
+					<h4>last name</h4>
+				</div>
+				<div class="col">
+					<span>buttons</span>
+				</div>
+			</li>
+			<li th:each="teacher: ${TEACHERS}">
+				<form class="form-row" th:object="${teacher}" th:action="@{/admin/add(collection = 'teacher')}" action="#" method="POST">
+					<input type="hidden" name="id" th:value="*{id}" />
+					<div class="col">
+						<input type="text" class="form-control" name="firstName" th:value="*{firstName}" />
+					</div>
+					<div class="col">
+						<input type="text" class="form-control" name="lastName" th:value="*{lastName}" />
+					</div>
+					<div class="col">
+						<input class="btn btn-raised btn-success" type="submit" value="save" />
+						<a class="btn btn-raised btn-danger" th:href="@{/admin/delete/{id}(id = ${teacher.id}, collection = 'teacher')}">delete</a>
+					</div>
+				</form>
+			</li>
+		</ul>
+		
 		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#teacherModal">add teacher</button>
 		
 		<h4>Current Users</h4>
