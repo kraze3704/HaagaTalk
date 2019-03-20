@@ -4,8 +4,8 @@ personal project for Server programming course
 
 ## TO-DO LIST
 
-- [ ] finish admin dashboard
-  - [ ] edit feature for collections
+- [X] finish admin dashboard
+  - [X] edit feature for collections
 
 - [ ] validations for add/edit: both admin dashboard & course pages
   - [ ] front-end side
@@ -15,9 +15,9 @@ personal project for Server programming course
 
 - [ ] js chatbox?
   
-- [ ] JOIN collections from mongo db?
+- [X] JOIN collections from mongo db?
   - editing/deleting documents from collection causes 'empty' links in my collection. need a solution for this.
-  - [ ] create function to update database after delete
+  - [X] create function to update database after delete
 
 - [ ] change user authentication to firebase
   - [ ] setup Spring security with firebase

@@ -199,7 +199,7 @@ public class HTController {
 		List<Course> courseByTeacherId = courseRepo.findByTeacherId(id);
 		for(Course course: courseByTeacherId) {
 			System.out.println("Updating course" + course.getCourseName() + "[" + course.getCourseCode() + "]");
-			course.setTeacherId("-");
+			course.setTeacherId("---");
 			courseRepo.save(course);
 		}
 	}
