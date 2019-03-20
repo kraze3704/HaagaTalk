@@ -64,6 +64,8 @@ public class HTController {
 				break;
 			case "teacher":
 				teacherRepo.deleteById(id);
+				// update the Course collection after deleting teacher document
+				updateSetUndefined(id);
 				break;
 			case "user":
 				userRepo.deleteById(id);
@@ -188,5 +190,15 @@ public class HTController {
 	@GetMapping("/admin/rest/comments")
 	public @ResponseBody List<Comment> commentListREST() {
 		return commentRepo.findAll();
+	}
+	
+	// after deleting a teacher document set all corresponding teacher id in Course collection to "-"
+	public void updateSetUndefined(String id) {
+		List<Course> courseByTeacherId = courseRepo.findByTeacherId(id);
+		for(Course course: courseByTeacherId) {
+			System.out.println("Updating course" + course.getCourseName() + "[" + course.getCourseCode() + "]");
+			course.setTeacherId("-");
+			courseRepo.save(course);
+		}
 	}
 }

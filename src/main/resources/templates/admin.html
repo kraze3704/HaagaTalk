@@ -23,7 +23,7 @@
 		<h4>Current courses</h4>
 		<ul>
 			<li th:each="course: ${COURSES}">
-				<span th:text="|${course.courseName} [${course.courseCode}]|"></span>
+				<span th:text="|${course.courseName} [${course.courseCode}] |"></span>
 				<a href="#">edit</a>
 				<a th:href="@{/admin/delete/{id}(id = ${course.id}, collection = 'course')}">delete</a>
 			</li>
@@ -144,7 +144,7 @@
 						<div class="form-group">
 							<label for="courseTeacher" class="bmd-label-static">teacher</label>
 							<select class="form-control" id="courseTeacher" th:field="*{teacherId}">
-								<option th:each="teacher : ${TEACHERS}" value="${teacher.teacherId}" th:text="|${teacher.firstName} ${teacher.lastName}|"></option>
+								<option th:each="teacher : ${TEACHERS}" th:value="${teacher.id}" th:text="|${teacher.firstName} ${teacher.lastName}|"></option>
 							</select>
 						</div>
 					</form>

@@ -17,6 +17,7 @@ personal project for Server programming course
   
 - [ ] JOIN collections from mongo db?
   - editing/deleting documents from collection causes 'empty' links in my collection. need a solution for this.
+  - [ ] create function to update database after delete
 
 - [ ] change user authentication to firebase
   - [ ] setup Spring security with firebase
