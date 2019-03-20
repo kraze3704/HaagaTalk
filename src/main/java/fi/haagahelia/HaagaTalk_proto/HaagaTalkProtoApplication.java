@@ -1,16 +1,10 @@
 package fi.haagahelia.HaagaTalk_proto;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import fi.haagahelia.HaagaTalk_proto.domain.Comment;
-import fi.haagahelia.HaagaTalk_proto.domain.CommentRepository;
 import fi.haagahelia.HaagaTalk_proto.domain.Course;
 import fi.haagahelia.HaagaTalk_proto.domain.CourseRepository;
 import fi.haagahelia.HaagaTalk_proto.domain.Teacher;
@@ -27,8 +21,8 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 	private CourseRepository courseRepo;
 	@Autowired
 	private TeacherRepository teacherRepo;
-	@Autowired
-	private CommentRepository commentRepo;
+//	@Autowired
+//	private CommentRepository commentRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HaagaTalkProtoApplication.class, args);
@@ -82,5 +76,7 @@ public class HaagaTalkProtoApplication implements CommandLineRunner {
 			System.out.println(course);
 		}
 		System.out.println("");
+		
+		
 	}
 }
