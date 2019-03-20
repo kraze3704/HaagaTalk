@@ -61,14 +61,16 @@ public class HTController {
 		switch(collection) {
 			case "course":
 				courseRepo.deleteById(id);
+				onDeleteCascade("course", id);
 				break;
 			case "teacher":
 				teacherRepo.deleteById(id);
 				// update the Course collection after deleting teacher document
-				updateSetUndefined(id);
+				onDeleteSetUndefined(id);
 				break;
 			case "user":
 				userRepo.deleteById(id);
+				onDeleteCascade("user", id);
 				break;
 				
 			default: // if collection name doesn't match anything return error
@@ -193,12 +195,34 @@ public class HTController {
 	}
 	
 	// after deleting a teacher document set all corresponding teacher id in Course collection to "-"
-	public void updateSetUndefined(String id) {
+	public void onDeleteSetUndefined(String id) {
 		List<Course> courseByTeacherId = courseRepo.findByTeacherId(id);
 		for(Course course: courseByTeacherId) {
 			System.out.println("Updating course" + course.getCourseName() + "[" + course.getCourseCode() + "]");
 			course.setTeacherId("-");
 			courseRepo.save(course);
 		}
+	}
+	// after deleting a course/user delete all comments for that course/user
+	public void onDeleteCascade(String collection, String id) {
+		switch(collection) {
+		case "course":
+			List<Comment> commentsByCourse = commentRepo.findByCourseId(id);
+			for(Comment comment : commentsByCourse) {
+				System.out.println("deleting comment::" + comment.getId());
+				commentRepo.delete(comment);
+			};
+			break;
+		case "user":
+			String username = userRepo.findById(id).get().getUsername();
+			List<Comment> commentsByUsername = commentRepo.findByUsername(username);
+			for(Comment comment : commentsByUsername) {
+				commentRepo.delete(comment);
+			};
+			break;
+		default:
+			System.out.println("ERROR: wrong collection or id");
+		}
+		System.out.println("update complete");
 	}
 }

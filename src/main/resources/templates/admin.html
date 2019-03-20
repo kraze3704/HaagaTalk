@@ -21,6 +21,7 @@
 		<h2>ADMIN DASHBOARD</h2>
 		
 		<h4>Current courses</h4>
+		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#courseModal">add course</button>
 		<ul>
 			<li class="row">
 				<div class="col"><h4>course code</h4></div>
@@ -40,7 +41,7 @@
 					<div class="col">
 						<select class="custom-select" name="teacherId" th:value="*{teacherId}">
 							<option th:each="teacher : ${TEACHERS}" th:value="${teacher.id}" th:text="${teacher.toString()}" th:selected="${course.teacherId.equals(teacher.id)}">teacher</option>
-							<option value="-" th:selected="${course.teacherId.equals('-')}">N/A</option>
+							<option value="---" th:selected="${course.teacherId.equals('---')}">teacher not decided</option>
 						</select>
 					</div>
 					<div class="col">
@@ -58,7 +59,6 @@
 				<a th:href="@{/admin/delete/{id}(id = ${course.id}, collection = 'course')}">delete</a>
 			</li>
 		</ul>
-		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#courseModal">add course</button>
 */-->
 
 <!--/*  old link
@@ -66,15 +66,7 @@
 */-->
 		
 		<h4>Current teachers</h4>
-<!--/* list without edit function
-		<ul>
-			<li th:each="teacher: ${TEACHERS}">
-				<span th:text="|${teacher.firstName}, ${teacher.lastName}|"></span>
-				<a href="#">edit</a>
-				<a th:href="@{/admin/delete/{id}(id = ${teacher.id}, collection = 'teacher')}">delete</a>
-			</li>
-		</ul>
-*/-->
+		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#teacherModal">add teacher</button>
 		<ul>
 			<li class="row">
 				<div class="col"><h4>first name</h4></div>
@@ -97,10 +89,18 @@
 				</form>
 			</li>
 		</ul>
-		
-		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#teacherModal">add teacher</button>
+<!--/* list without edit function
+		<ul>
+			<li th:each="teacher: ${TEACHERS}">
+				<span th:text="|${teacher.firstName}, ${teacher.lastName}|"></span>
+				<a href="#">edit</a>
+				<a th:href="@{/admin/delete/{id}(id = ${teacher.id}, collection = 'teacher')}">delete</a>
+			</li>
+		</ul>
+*/-->
 		
 		<h4>Current Users</h4>
+		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#userModal">add user</button>
 		<ul>
 			<li class="row">
 				<div class="col"><h4>username</h4></div>
@@ -135,7 +135,6 @@
 */-->
 			</li>
 		</ul>
-		<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#userModal">add user</button>
 	</div>
 	
 	
@@ -162,6 +161,7 @@
 						<div class="form-group">
 							<label for="courseTeacher" class="bmd-label-static">teacher</label>
 							<select class="form-control" id="courseTeacher" th:field="*{teacherId}">
+								<option value="---">teacher not decided</option>
 								<option th:each="teacher : ${TEACHERS}" th:value="${teacher.id}" th:text="|${teacher.firstName} ${teacher.lastName}|"></option>
 							</select>
 						</div>
